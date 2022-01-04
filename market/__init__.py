@@ -25,5 +25,6 @@ def create_app():
 
 def create_database(app):
     if not Path(f"market/{DATABASE_NAME}").exists():
-        db.create_all(app=app)
-        print("Database created!!!")
+        with app.app_context():
+            db.create_all(app=app)
+            print("Database created!!!")
