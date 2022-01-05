@@ -7,11 +7,11 @@ views = Blueprint("views", __name__)
 
 @views.route("/")
 @views.route("/home")
-def home_page():
+def home():
     return render_template("home.html")
 
 
 @views.route("/market")
-def market_page():
+def market():
     items = Item.query.all()
     return render_template("market.html", items=items)

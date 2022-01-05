@@ -21,10 +21,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{{ url_for('views.home_page') }}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{ url_for('views.home') }}">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('views.market_page') }}">Market</a>
+            <a class="nav-link" href="{{ url_for('views.market') }}">Market</a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -32,11 +32,24 @@
             <a class="nav-link" href="#">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('auth.register_page') }}">Register</a>
+            <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
           </li>
         </ul>
       </div>
     </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+            <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     {% block content %}
 
     {% endblock %}
