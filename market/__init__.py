@@ -1,10 +1,13 @@
 from pathlib import Path
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 
 db = SQLAlchemy()
 DATABASE_NAME = "market.db"
+
+bcrypt = Bcrypt()
 
 
 def create_app():
@@ -13,6 +16,7 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DATABASE_NAME}"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
+    bcrypt.init_app(app)
 
     from market.views import views
     from market.auth import auth

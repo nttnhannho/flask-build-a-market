@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block title %}
-Register Page
+Login Page
 {% endblock %}
 
 {% block content %}
 <div class="container">
   <div class="h3 mt-3 mb-3 text-center">
-    <h1 class="font-weight-normal">Create New Account</h1>
+    <h1 class="font-weight-normal">Login Account</h1>
   </div>
   <form method="POST" style="color:white" novalidate>
     {{ form.hidden_tag() }}
@@ -16,20 +16,12 @@ Register Page
       {{ form.username(class="form-control", placeholder="User Name") }}
     </div>
     <div class="form-group mb-3">
-      {{ form.email_address.label }}
-      {{ form.email_address(class="form-control", placeholder="Email Address") }}
-    </div>
-    <div class="form-group mb-3">
       {{ form.password.label }}
       {{ form.password(class="form-control", placeholder="Password") }}
     </div>
-    <div class="form-group mb-3">
-      {{ form.confirm_password.label }}
-      {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
-    </div>
     <div class="checkbox mb-3">
-      <span>Already Have Account?</span>
-      <a class="btn btn-sm btn-secondary" href="{{ url_for('auth.login') }}">Login</a>
+      <span>Do not have account?</span>
+      <a class="btn btn-sm btn-secondary" href="{{ url_for('auth.register') }}">Register</a>
     </div>
     <div class="form-group text-center">
       {{ form.submit(class="btn btn-lg btn-primary") }}
