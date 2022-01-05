@@ -15,7 +15,9 @@ def create_app():
     db.init_app(app)
 
     from market.views import views
+    from market.auth import auth
     app.register_blueprint(views, url_prefix="/")
+    app.register_blueprint(auth, url_prefix="/")
 
     from market.models import Item
     create_database(app)

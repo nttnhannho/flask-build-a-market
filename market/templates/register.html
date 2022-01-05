@@ -9,7 +9,8 @@ Register Page
   <div class="h3 mb-3 text-center">
     <h1 class="font-weight-normal">Create New Account</h1>
   </div>
-  <form method="POST" style="color:white">
+  <form method="POST" style="color:white" novalidate>
+    {{ form.hidden_tag() }}
     <div class="form-group mb-3">
       {{ form.username.label }}
       {{ form.username(class="form-control", placeholder="User Name") }}
