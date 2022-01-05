@@ -2,12 +2,13 @@ from pathlib import Path
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 
-db = SQLAlchemy()
 DATABASE_NAME = "market.db"
-
+db = SQLAlchemy()
 bcrypt = Bcrypt()
+login_manager = LoginManager()
 
 
 def create_app():
@@ -25,6 +26,8 @@ def create_app():
 
     from market.models import Item
     create_database(app)
+
+    login_manager.init_app(app)
 
     return app
 

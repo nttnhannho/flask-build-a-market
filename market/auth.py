@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash
 from market import db
 from market.forms import RegisterForm, LoginForm
 from market.models import User
+from flask_login import login_user
 
 
 auth = Blueprint("auth", __name__)
@@ -26,4 +27,12 @@ def register():
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        attempted_user = User.query.filter_by(username=form.username.data).first()
+        if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
+            login_user(attempted_user)
+            flash(f"Success! You are logged in as {attempted_user.username}", category="success")
+            return redirect(url_for("views.market"))
+        else:
+            flash(f"Incorrect user name or password! Please try again.", category="danger")
     return render_template("login.html", form=form)
