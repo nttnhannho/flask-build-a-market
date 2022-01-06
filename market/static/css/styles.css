@@ -21,3 +21,8 @@ body {
 .navbar-sd {
     font-size: larger;
 }
+
+.table-sd {
+    margin-top: 20px;
+    margin-left: 20px;
+}
