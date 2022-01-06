@@ -1,0 +1,23 @@
+body {
+    background-color: #212121;
+    color: white;
+}
+
+.greeting-sd {
+    color: red !important;
+}
+
+.brand-sd {
+    font-size: 150%;
+    color: red !important;
+    font-family: 'Brush Script MT', cursive;
+}
+
+.cash-sd {
+    color: lawngreen !important;
+    font-weight: bold;
+}
+
+.navbar-sd {
+    font-size: larger;
+}
