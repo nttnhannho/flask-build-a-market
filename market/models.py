@@ -23,13 +23,9 @@ class User(db.Model, UserMixin):
     def password(self, plain_text_password):
         self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode("utf-8")
 
-    # @property
-    # def prettier_budget(self):
-    #     str_budget = str(self.budget)
-    #     if len(str_budget) >= 4:
-    #         return f"{str_budget[:-3]}, {str_budget[-3:]}$"
-    #     else:
-    #         return f"{self.budget}$"
+    @property
+    def prettier_budget(self):
+        return "{:,}".format(self.budget)
 
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
