@@ -33,9 +33,16 @@ class User(db.Model, UserMixin):
     def can_purchase(self, item_obj):
         return self.budget >= item_obj.price
 
-    def purchase(self, item_obj):
+    def purchase_item(self, item_obj):
         item_obj.owner = self.id
         self.budget -= item_obj.price
+
+    def can_return(self, item_obj):
+        return item_obj in self.items
+
+    def return_item(self, item_obj):
+        item_obj.owner = None
+        self.budget += item_obj.price
 
 
 class Item(db.Model):

@@ -1,0 +1,34 @@
+<style>
+  .modal-content {
+    background-color: #212121 !important;
+  }
+</style>
+
+<div class="modal fade" id="modal-returning-confirm-{{ owned_item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ owned_item.name }}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+          {{ returning_form.hidden_tag() }}
+          <h4 class="text-center">Are you sure you want to return {{ owned_item.name }} for ${{ owned_item.price }}?</h4>
+          <br>
+          <h6 class="text-center">By clicking Return, you will put this item back on Market</h6>
+          <br>
+          <input id="returned_item" name="returned_item" type="hidden" value="{{ owned_item.name }}">
+          {{ returning_form.submit(class="btn btn-outline-danger btn-block") }}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

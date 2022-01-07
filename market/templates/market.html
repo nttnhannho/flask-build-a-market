@@ -5,7 +5,7 @@ Market Page
 {% endblock %}
 
 {% block content %}
-<div class="row table-sd">
+<div class="row row-sd">
   <div class="col-8">
     <h2>Available items on the Market</h2>
     <p>Click on one of the items to start buying</p>
@@ -43,6 +43,24 @@ Market Page
     <h2>Owned Items</h2>
     <p>Click on Return to put item back on the Market</p>
     <br>
+    <div class="row mx-0">
+      {% for owned_item in owned_items %}
+        {% include "includes/owned_items_modals.html" %}
+          <div class="col-md-6 px-1">
+            <div class="card text-center bg-dark card-sd">
+              <div class="card-body">
+                <h5 class="card-title">{{ owned_item.name }}</h5>
+                <button type="button" class="btn btn-outline-danger btn-sd" data-toggle="modal" data-target="#modal-returning-confirm-{{ owned_item.id }}">
+                  Return
+                </button>
+                <p class="card-text"><strong>
+                  This item costs ${{ owned_item.price }}
+                </strong></p>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 {% endblock %}

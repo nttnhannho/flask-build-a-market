@@ -3,26 +3,41 @@ body {
     color: white;
 }
 
-.greeting-sd {
-    color: red !important;
+.navbar-sd {
+    font-size: larger;
 }
 
-.brand-sd {
+.navbar-brand-sd {
     font-size: 150%;
     color: red !important;
     font-family: 'Brush Script MT', cursive;
 }
 
-.cash-sd {
+.nav-cash-sd {
     color: lawngreen !important;
     font-weight: bold;
 }
 
-.navbar-sd {
-    font-size: larger;
+.nav-greeting-sd {
+    color: red !important;
 }
 
-.table-sd {
+.row-sd {
     margin-top: 20px;
     margin-left: 20px;
+    margin-right: 20px;
+}
+
+.card-sd {
+    margin-bottom: 5px;
+}
+
+.btn-sd {
+    margin-bottom: 5px;
+}
+
+.brand-sd {
+    font-size: 600%;
+    color: red !important;
+    font-family: 'Brush Script MT', cursive;
 }
