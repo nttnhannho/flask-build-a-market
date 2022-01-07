@@ -20,15 +20,17 @@ def create_app():
     bcrypt.init_app(app)
 
     from market.views import views
-    from market.auth import auth
+    from market.auths import auths
+    from market.markets import markets
     app.register_blueprint(views, url_prefix="/")
-    app.register_blueprint(auth, url_prefix="/")
+    app.register_blueprint(auths, url_prefix="/")
+    app.register_blueprint(markets, url_prefix="/")
 
     from market.models import Item
     create_database(app)
 
     login_manager.init_app(app)
-    login_manager.login_view = "auth.login"
+    login_manager.login_view = "auths.login"
     login_manager.login_message_category = "info"
 
     return app
